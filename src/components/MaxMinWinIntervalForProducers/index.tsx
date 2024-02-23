@@ -11,7 +11,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { type IInterval, type IIntervalList } from '@/types/interfaces'
+import { type IInterval, type IIntervalList } from '@/types'
 
 export function MaxMinWinIntervalForProducers(): JSX.Element {
   const [maxMinWinIntervalForProducers, setMaxMinWinIntervalForProducers] =

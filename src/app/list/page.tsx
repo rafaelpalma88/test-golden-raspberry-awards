@@ -22,10 +22,7 @@ import { useEffect, useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
-import {
-  type IMoviesWinnerInfo,
-  type IMoviesResponse,
-} from '@/types/interfaces'
+import { type IMoviesWinnerInfo, type IMoviesResponse } from '@/types'
 import { CustomPagination } from '@/components/CustomPagination'
 
 interface Inputs {

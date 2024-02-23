@@ -29,6 +29,12 @@ First, clone the project in your computer and install dependencies using:
 npm install
 ```
 
+Create a .env file in the root of your project and add a API_URL:
+
+```bash
+NEXT_PUBLIC_API_BASE_URL=https://tools.texoit.com/backend-java/api/movies
+```
+
 After, run the development server:
 
 ```bash

@@ -11,7 +11,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { type IYearData } from '@/types/interfaces'
+import { type IYearData } from '@/types'
 
 export function YearsWithMultipleWinners(): JSX.Element {
   const [yearsWithMultipleWinners, setYearsWithMultipleWinners] = useState<
@@ -24,7 +24,6 @@ export function YearsWithMultipleWinners(): JSX.Element {
 
   async function getData(): Promise<void> {
     try {
-      // TODO: use environment variables proccess.env.API_URL
       const result = await axios.get(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}?projection=years-with-multiple-winners`
       )

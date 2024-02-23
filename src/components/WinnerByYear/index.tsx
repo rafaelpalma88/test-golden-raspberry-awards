@@ -13,7 +13,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useForm, type SubmitHandler } from 'react-hook-form'
-import { type IMoviesWinnerInfo } from '@/types/interfaces'
+import { type IMoviesWinnerInfo } from '@/types'
 
 interface Inputs {
   selectedYear: number

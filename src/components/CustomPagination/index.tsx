@@ -6,7 +6,7 @@ import {
   PaginationItem,
   PaginationLink,
 } from '@/components/ui/pagination'
-import { type IMoviesResponse } from '@/types/interfaces'
+import { type IMoviesResponse } from '@/types'
 
 interface IProps {
   movies: IMoviesResponse

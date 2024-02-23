@@ -11,7 +11,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { type IStudio } from '@/types/interfaces'
+import { type IStudio } from '@/types'
 
 export function StudiosWithWinCount(): JSX.Element {
   const [studiosWithWinCount, setStudiosWithWinCount] = useState<IStudio[]>([])
