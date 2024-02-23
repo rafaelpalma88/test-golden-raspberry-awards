@@ -48,15 +48,12 @@ export function StudiosWithWinCount(): JSX.Element {
           </TableHeader>
 
           <TableBody>
-            {studiosWithWinCount
-              ?.sort((a: IStudio, b: IStudio) => b.winCount - a.winCount)
-              .slice(0, 3)
-              .map((item: IStudio) => (
-                <TableRow key={item.name}>
-                  <TableCell>{item.name}</TableCell>
-                  <TableCell>{item.winCount}</TableCell>
-                </TableRow>
-              ))}
+            {studiosWithWinCount?.slice(0, 3).map((item: IStudio) => (
+              <TableRow key={item.name}>
+                <TableCell>{item.name}</TableCell>
+                <TableCell>{item.winCount}</TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </CardContent>
