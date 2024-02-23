@@ -11,7 +11,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { IStudio } from '@/types/interfaces'
+import { type IStudio } from '@/types/interfaces'
 
 export function StudiosWithWinCount(): JSX.Element {
   const [studiosWithWinCount, setStudiosWithWinCount] = useState<IStudio[]>()
@@ -26,8 +26,8 @@ export function StudiosWithWinCount(): JSX.Element {
         `https://tools.texoit.com/backend-java/api/movies?projection=studios-with-win-count`
       )
 
-      const { studios } = result.data
-      setStudiosWithWinCount(studios)
+      const studiosData: IStudio[] = result.data
+      setStudiosWithWinCount(studiosData)
     } catch (error) {
       console.log(error)
     }

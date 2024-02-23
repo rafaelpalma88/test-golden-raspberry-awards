@@ -6,7 +6,7 @@ import {
   PaginationItem,
   PaginationLink,
 } from '@/components/ui/pagination'
-import { IMovie, IMoviesResponse } from '@/types/interfaces'
+import { type IMoviesResponse } from '@/types/interfaces'
 
 interface IProps {
   movies: IMoviesResponse
@@ -14,9 +14,12 @@ interface IProps {
   handleNextPage: (page: number) => void
 }
 
-export function CustomPagination({movies, selectedPage, handleNextPage }: IProps) {
-
-  function handleClick(page: number) {
+export function CustomPagination({
+  movies,
+  selectedPage,
+  handleNextPage,
+}: IProps): JSX.Element {
+  function handleClick(page: number): void {
     handleNextPage(page)
   }
 
@@ -25,34 +28,34 @@ export function CustomPagination({movies, selectedPage, handleNextPage }: IProps
     (_, index) => index + 1
   )
 
-  return(
+  return (
     <Pagination>
-    <PaginationContent>
-      {/* TODO: Improve pagination using first and last page */}
-      {/* <PaginationItem>
+      <PaginationContent>
+        {/* TODO: Improve pagination using first and last page */}
+        {/* <PaginationItem>
         <PaginationPrevious href="#" />
       </PaginationItem> */}
-      {pages?.map((page) => (
-        <PaginationItem key={page}>
-          <PaginationLink
-            isActive={selectedPage === page}
-            onClick={() => {
-              handleClick(page)
-              // setSelectedPage(page)
-            }}
-          >
-            {page}
-          </PaginationLink>
-        </PaginationItem>
-      ))}
+        {pages?.map((page) => (
+          <PaginationItem key={page}>
+            <PaginationLink
+              isActive={selectedPage === page}
+              onClick={() => {
+                handleClick(page)
+                // setSelectedPage(page)
+              }}
+            >
+              {page}
+            </PaginationLink>
+          </PaginationItem>
+        ))}
 
-      {/* <PaginationItem>
+        {/* <PaginationItem>
         <PaginationEllipsis />
       </PaginationItem> */}
-      {/* <PaginationItem>
+        {/* <PaginationItem>
         <PaginationNext onClick={handleNextPage} href="#" />
       </PaginationItem> */}
-    </PaginationContent>
-  </Pagination>
+      </PaginationContent>
+    </Pagination>
   )
 }

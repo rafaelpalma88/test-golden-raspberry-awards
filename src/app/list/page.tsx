@@ -22,16 +22,19 @@ import { useEffect, useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
-import { IMoviesWinnerInfo, type IMoviesResponse } from '@/types/interfaces'
+import {
+  type IMoviesWinnerInfo,
+  type IMoviesResponse,
+} from '@/types/interfaces'
 import { CustomPagination } from '@/components/CustomPagination'
 
 interface Inputs {
   selectedYear: string
 }
 
-
 export default function List(): JSX.Element {
   const [selectedPage, setSelectedPage] = useState<number>(1)
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const [movies, setMovies] = useState<IMoviesResponse>({} as IMoviesResponse)
   const [filteredYear, setFilteredYear] = useState<string | null>(null)
   const [isWinner, setIsWinner] = useState<boolean | null>(null)
@@ -56,17 +59,16 @@ export default function List(): JSX.Element {
 
       const result = await axios.get(url)
 
-      const { data } = result
-      setMovies(data)
+      const moviesData: IMoviesResponse = result.data
+      setMovies(moviesData)
     } catch (error) {
       console.log(error)
     }
   }
 
-  const handleNextPage = (pageNumber: any) => {
+  function handleNextPage(pageNumber: number): void {
     setSelectedPage(pageNumber)
-  };
-
+  }
 
   function handleWinnerChange(teste: 'yes' | 'no'): void {
     if (teste === 'yes') {
@@ -101,6 +103,7 @@ export default function List(): JSX.Element {
                       <div className="pb-2">
                         <form
                           className="flex w-full max-w-sm items-center space-x-2 pb-5"
+                          // eslint-disable-next-line @typescript-eslint/no-misused-promises
                           onSubmit={handleSubmit(onSubmit)}
                         >
                           <Input
@@ -149,10 +152,11 @@ export default function List(): JSX.Element {
               </Table>
             </CardContent>
             <div className="py-5">
-              {movies && (
-                <CustomPagination movies={movies} selectedPage={selectedPage} handleNextPage={handleNextPage} />
-              )}
-              
+              <CustomPagination
+                movies={movies}
+                selectedPage={selectedPage}
+                handleNextPage={handleNextPage}
+              />
             </div>
           </Card>
         </div>

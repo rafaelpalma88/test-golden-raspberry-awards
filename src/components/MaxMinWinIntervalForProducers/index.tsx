@@ -11,10 +11,11 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { IInterval, type IIntervalList } from '@/types/interfaces'
+import { type IInterval, type IIntervalList } from '@/types/interfaces'
 
 export function MaxMinWinIntervalForProducers(): JSX.Element {
   const [maxMinWinIntervalForProducers, setMaxMinWinIntervalForProducers] =
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     useState<IIntervalList>({} as IIntervalList)
 
   useEffect(() => {

@@ -16,7 +16,7 @@ import { useForm, type SubmitHandler } from 'react-hook-form'
 import { type IMoviesWinnerInfo } from '@/types/interfaces'
 
 interface Inputs {
-  selectedYear: string
+  selectedYear: number
 }
 
 export function WinnerByYear(): JSX.Element {
@@ -58,6 +58,7 @@ export function WinnerByYear(): JSX.Element {
       <CardContent>
         <form
           className="flex w-full max-w-sm items-center space-x-2 pb-5"
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onSubmit={handleSubmit(onSubmit)}
         >
           <Input
