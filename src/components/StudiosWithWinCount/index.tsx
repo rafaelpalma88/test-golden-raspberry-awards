@@ -26,7 +26,7 @@ export function StudiosWithWinCount(): JSX.Element {
         `https://tools.texoit.com/backend-java/api/movies?projection=studios-with-win-count`
       )
 
-      const studiosData: IStudio[] = result.data
+      const studiosData: IStudio[] = result.data.studios
       setStudiosWithWinCount(studiosData)
     } catch (error) {
       console.log(error)
