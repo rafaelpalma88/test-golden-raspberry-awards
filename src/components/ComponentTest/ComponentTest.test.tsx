@@ -1,11 +1,13 @@
-import React from 'react'
 import { describe, expect, it } from 'vitest'
 import { render } from '@testing-library/react'
 import { ComponentTest } from '.'
 
 describe('Component: Teste', () => {
   it('should render correctly component Test', () => {
+    // POC - Just to test Vitest and RTL environment
     render(<ComponentTest />)
-    expect(1).toBe(1)
+    const sum = 1 + 3
+    // TODO: I need to finish this test
+    expect(sum).toBe(4)
   })
 })
