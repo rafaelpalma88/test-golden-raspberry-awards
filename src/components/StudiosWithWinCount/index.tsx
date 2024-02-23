@@ -14,7 +14,7 @@ import axios from 'axios'
 import { type IStudio } from '@/types/interfaces'
 
 export function StudiosWithWinCount(): JSX.Element {
-  const [studiosWithWinCount, setStudiosWithWinCount] = useState<IStudio[]>()
+  const [studiosWithWinCount, setStudiosWithWinCount] = useState<IStudio[]>([])
 
   useEffect(() => {
     getData()
@@ -48,12 +48,13 @@ export function StudiosWithWinCount(): JSX.Element {
           </TableHeader>
 
           <TableBody>
-            {studiosWithWinCount?.slice(0, 3).map((item: IStudio) => (
-              <TableRow key={item.name}>
-                <TableCell>{item.name}</TableCell>
-                <TableCell>{item.winCount}</TableCell>
-              </TableRow>
-            ))}
+            {studiosWithWinCount.length > 0 &&
+              studiosWithWinCount?.slice(0, 3).map((item: IStudio) => (
+                <TableRow key={item.name}>
+                  <TableCell>{item.name}</TableCell>
+                  <TableCell>{item.winCount}</TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </CardContent>
