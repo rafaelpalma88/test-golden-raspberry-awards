@@ -26,7 +26,7 @@ export function YearsWithMultipleWinners(): JSX.Element {
     try {
       // TODO: use environment variables proccess.env.API_URL
       const result = await axios.get(
-        `https://tools.texoit.com/backend-java/api/movies?projection=years-with-multiple-winners`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}?projection=years-with-multiple-winners`
       )
       const yearsData: IYearData[] = result.data.years
 

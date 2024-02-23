@@ -25,7 +25,7 @@ export function MaxMinWinIntervalForProducers(): JSX.Element {
   async function getData(): Promise<void> {
     try {
       const result = await axios.get(
-        `https://tools.texoit.com/backend-java/api/movies?projection=max-min-win-interval-for-producers`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}?projection=max-min-win-interval-for-producers`
       )
 
       const maxMinIntervalData: IIntervalList = result.data

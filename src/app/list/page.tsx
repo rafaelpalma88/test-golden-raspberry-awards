@@ -47,7 +47,7 @@ export default function List(): JSX.Element {
 
   async function getData(): Promise<void> {
     try {
-      let url = `https://tools.texoit.com/backend-java/api/movies?page=${selectedPage}&size=15`
+      let url = `${process.env.NEXT_PUBLIC_API_BASE_URL}?page=${selectedPage}&size=15`
 
       if (isWinner !== null) {
         url += `&winner=${isWinner}`

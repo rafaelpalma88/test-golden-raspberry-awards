@@ -23,7 +23,7 @@ export function StudiosWithWinCount(): JSX.Element {
   async function getData(): Promise<void> {
     try {
       const result = await axios.get(
-        `https://tools.texoit.com/backend-java/api/movies?projection=studios-with-win-count`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}?projection=studios-with-win-count`
       )
 
       const studiosData: IStudio[] = result.data.studios
