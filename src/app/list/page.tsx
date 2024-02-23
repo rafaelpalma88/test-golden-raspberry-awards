@@ -97,9 +97,7 @@ export default function List(): JSX.Element {
                   <TableRow>
                     <TableHead>ID</TableHead>
                     <TableHead>
-                      <div className="py-2">
-                        <p>Year</p>
-                      </div>
+                      <div className="py-2">Year</div>
                       <div className="pb-2">
                         <form
                           className="flex w-full max-w-sm items-center space-x-2 pb-5"
@@ -118,9 +116,7 @@ export default function List(): JSX.Element {
                     </TableHead>
                     <TableHead>Title</TableHead>
                     <TableHead>
-                      <div className="py-2">
-                        <p>Winner?</p>
-                      </div>
+                      <div className="py-2">Winner?</div>
                       <div className="pb-2">
                         <Select onValueChange={handleWinnerChange}>
                           <SelectTrigger>
@@ -138,7 +134,9 @@ export default function List(): JSX.Element {
 
                 <TableBody>
                   {movies?.content?.length === 0 && (
-                    <p>There is no data to show</p>
+                    <TableRow>
+                      <TableCell> There is no data to show</TableCell>
+                    </TableRow>
                   )}
                   {movies?.content?.map((item: IMoviesWinnerInfo) => (
                     <TableRow key={item.id}>
