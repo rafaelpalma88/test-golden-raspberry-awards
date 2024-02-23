@@ -1,11 +1,13 @@
-import { describe, expect, it } from 'vitest'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { MaxMinWinIntervalForProducers } from '.'
 
 describe('Component: MaxMinWinIntervalForProducers', () => {
   it('should render correctly MaxMinWinIntervalForProducers component', () => {
     render(<MaxMinWinIntervalForProducers />)
-    // TODO: I need to finish this test
-    expect(1).toBe(1)
+
+    const componentTitle = screen.getByText(
+      'Producers with longest and shortest interval between wins'
+    )
+    expect(componentTitle).toBeInTheDocument()
   })
 })
