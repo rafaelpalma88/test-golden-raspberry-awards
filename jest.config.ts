@@ -15,8 +15,17 @@ const config: Config = {
   moduleNameMapper: {
     // ...
     '^@/components/(.*)$': '<rootDir>/components/$1',
+    '^@/app/dashboard/(.*)$': '<rootDir>/app/dashboard/$1',
+    '^@/app/list/(.*)$': '<rootDir>/app/list/$1',
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/.next/',
+    '/components/ui',
+    '/lib',
+    '/tests/mocks',
+  ],
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

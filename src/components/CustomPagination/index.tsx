@@ -41,7 +41,6 @@ export function CustomPagination({
               isActive={selectedPage === page}
               onClick={() => {
                 handleClick(page)
-                // setSelectedPage(page)
               }}
               data-testid={`pagination-link-${page}`}
             >
