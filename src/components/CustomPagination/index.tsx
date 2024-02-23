@@ -43,6 +43,7 @@ export function CustomPagination({
                 handleClick(page)
                 // setSelectedPage(page)
               }}
+              data-testid={`pagination-link-${page}`}
             >
               {page}
             </PaginationLink>
