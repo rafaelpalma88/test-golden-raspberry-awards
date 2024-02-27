@@ -67,10 +67,10 @@ export default function List(): JSX.Element {
     setSelectedPage(pageNumber)
   }
 
-  function handleWinnerChange(teste: 'yes' | 'no'): void {
-    if (teste === 'yes') {
+  function handleWinnerChange(isWinnerSelected: 'yes' | 'no'): void {
+    if (isWinnerSelected === 'yes') {
       setIsWinner(true)
-    } else if (teste === 'no') {
+    } else if (isWinnerSelected === 'no') {
       setIsWinner(false)
     }
   }
@@ -92,8 +92,8 @@ export default function List(): JSX.Element {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>ID</TableHead>
-                    <TableHead>
+                    <TableHead className="w-[140px]">ID</TableHead>
+                    <TableHead className="w-[240px]">
                       <div className="py-2">Year</div>
                       <div className="pb-2">
                         <form
@@ -112,7 +112,7 @@ export default function List(): JSX.Element {
                       </div>
                     </TableHead>
                     <TableHead>Title</TableHead>
-                    <TableHead>
+                    <TableHead className="w-[140px]">
                       <div className="py-2">Winner?</div>
                       <div className="pb-2">
                         <Select onValueChange={handleWinnerChange}>
