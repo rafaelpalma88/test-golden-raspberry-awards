@@ -17,13 +17,13 @@ import {
 } from '@/components/ui/table'
 
 import { Card, CardContent } from '@/components/ui/card'
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
 import { type IMoviesWinnerInfo, type IMoviesResponse } from '@/types'
 import { CustomPagination } from '@/components/CustomPagination'
+import { getMoviesListService } from '@/services/getMoviesListService'
 
 interface Inputs {
   selectedYear: string
@@ -44,20 +44,15 @@ export default function List(): JSX.Element {
 
   async function getData(): Promise<void> {
     try {
-      let url = `${process.env.NEXT_PUBLIC_API_BASE_URL}?page=${selectedPage}&size=15`
+      const response = await getMoviesListService({
+        selectedPage,
+        isWinner,
+        filteredYear,
+      })
 
-      if (isWinner !== null) {
-        url += `&winner=${isWinner}`
-      }
+      console.log('response', response)
 
-      if (filteredYear !== null) {
-        url += `&year=${filteredYear}`
-      }
-
-      const result = await axios.get(url)
-
-      const moviesData: IMoviesResponse = result.data
-      setMovies(moviesData)
+      setMovies(response)
     } catch (error) {
       console.log(error)
     }
