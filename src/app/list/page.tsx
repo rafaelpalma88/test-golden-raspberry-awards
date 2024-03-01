@@ -50,11 +50,9 @@ export default function List(): JSX.Element {
         filteredYear,
       })
 
-      console.log('response', response)
-
       setMovies(response)
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 

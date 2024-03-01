@@ -11,9 +11,9 @@ import {
 } from '@/components/ui/table'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { useForm, type SubmitHandler } from 'react-hook-form'
-import { type IMoviesWinnerInfo } from '@/types'
+import { type IMovie, type IMoviesWinnerInfo } from '@/types'
+import { getWinnerByYearService } from '@/services/getWinnerByYearService'
 
 interface Inputs {
   selectedYear: number
@@ -23,8 +23,8 @@ export function WinnerByYear(): JSX.Element {
   const [selectedYear, setSelectedYear] = useState<number>(
     new Date().getFullYear()
   )
-  const [movieWinnersInfo, setMovieWinnersInfo] = useState<IMoviesWinnerInfo[]>(
-    [] as IMoviesWinnerInfo[]
+  const [movieWinnersInfo, setMovieWinnersInfo] = useState<IMovie[]>(
+    [] as IMovie[]
   )
 
   useEffect(() => {
@@ -35,14 +35,11 @@ export function WinnerByYear(): JSX.Element {
 
   async function getData(): Promise<void> {
     try {
-      const result = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}?winner=true&year=${selectedYear}`
-      )
+      const response = await getWinnerByYearService({ selectedYear })
 
-      const movieWinnersData: IMoviesWinnerInfo[] = result.data
-      setMovieWinnersInfo(movieWinnersData)
+      setMovieWinnersInfo(response)
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 

@@ -10,8 +10,8 @@ import {
 } from '@/components/ui/table'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { type IYearData } from '@/types'
+import { getYearsWithMultipleWinnersService } from '@/services/getYearsWithMultipleWinnersService'
 
 export function YearsWithMultipleWinners(): JSX.Element {
   const [yearsWithMultipleWinners, setYearsWithMultipleWinners] = useState<
@@ -24,14 +24,11 @@ export function YearsWithMultipleWinners(): JSX.Element {
 
   async function getData(): Promise<void> {
     try {
-      const result = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}?projection=years-with-multiple-winners`
-      )
-      const yearsData: IYearData[] = result.data.years
+      const response = await getYearsWithMultipleWinnersService()
 
-      setYearsWithMultipleWinners(yearsData)
+      setYearsWithMultipleWinners(response?.years)
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 

@@ -2,12 +2,8 @@
 
 import { Menubar, MenubarMenu, MenubarTrigger } from '@/components/ui/menubar'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 
 export function Header(): JSX.Element {
-  const pathname = usePathname()
-  console.log('pathname', pathname)
-
   return (
     <>
       <Menubar className="px-7">

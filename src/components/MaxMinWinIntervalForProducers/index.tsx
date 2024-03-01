@@ -31,7 +31,7 @@ export function MaxMinWinIntervalForProducers(): JSX.Element {
       const maxMinIntervalData: IIntervalList = result.data
       setMaxMinWinIntervalForProducers(maxMinIntervalData)
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 

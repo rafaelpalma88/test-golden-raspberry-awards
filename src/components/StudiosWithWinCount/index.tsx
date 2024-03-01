@@ -29,7 +29,7 @@ export function StudiosWithWinCount(): JSX.Element {
       const studiosData: IStudio[] = result.data.studios
       setStudiosWithWinCount(studiosData)
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
