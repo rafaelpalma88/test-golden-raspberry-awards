@@ -10,8 +10,8 @@ import {
 } from '@/components/ui/table'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { type IInterval, type IIntervalList } from '@/types'
+import { getMaxMinWinIntervalForProducers } from '@/services/getMaxMinWinIntervalForProducers'
 
 export function MaxMinWinIntervalForProducers(): JSX.Element {
   const [maxMinWinIntervalForProducers, setMaxMinWinIntervalForProducers] =
@@ -24,12 +24,9 @@ export function MaxMinWinIntervalForProducers(): JSX.Element {
 
   async function getData(): Promise<void> {
     try {
-      const result = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}?projection=max-min-win-interval-for-producers`
-      )
+      const response = await getMaxMinWinIntervalForProducers()
 
-      const maxMinIntervalData: IIntervalList = result.data
-      setMaxMinWinIntervalForProducers(maxMinIntervalData)
+      setMaxMinWinIntervalForProducers(response)
     } catch (error) {
       console.error(error)
     }

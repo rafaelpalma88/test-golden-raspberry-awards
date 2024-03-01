@@ -10,8 +10,8 @@ import {
 } from '@/components/ui/table'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { type IStudio } from '@/types'
+import { getStudiosWithWinCount } from '@/services/getStudiosWithWinCount'
 
 export function StudiosWithWinCount(): JSX.Element {
   const [studiosWithWinCount, setStudiosWithWinCount] = useState<IStudio[]>([])
@@ -22,12 +22,11 @@ export function StudiosWithWinCount(): JSX.Element {
 
   async function getData(): Promise<void> {
     try {
-      const result = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}?projection=studios-with-win-count`
-      )
+      const response = await getStudiosWithWinCount()
 
-      const studiosData: IStudio[] = result.data.studios
-      setStudiosWithWinCount(studiosData)
+      const { studios } = response
+
+      setStudiosWithWinCount(studios)
     } catch (error) {
       console.error(error)
     }

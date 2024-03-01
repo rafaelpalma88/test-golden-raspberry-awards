@@ -72,3 +72,7 @@ export interface IStudio {
   name: string
   winCount: number
 }
+
+export interface IStudioWithCountResponse {
+  studios: IStudio[]
+}
