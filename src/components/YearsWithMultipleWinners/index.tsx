@@ -1,5 +1,3 @@
-'use client'
-
 import {
   Table,
   TableBody,
@@ -9,28 +7,11 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { useEffect, useState } from 'react'
 import { type IYearData } from '@/types'
 import { getYearsWithMultipleWinnersService } from '@/services/getYearsWithMultipleWinnersService'
 
-export function YearsWithMultipleWinners(): JSX.Element {
-  const [yearsWithMultipleWinners, setYearsWithMultipleWinners] = useState<
-    IYearData[]
-  >([] as IYearData[])
-
-  useEffect(() => {
-    getData()
-  }, [])
-
-  async function getData(): Promise<void> {
-    try {
-      const response = await getYearsWithMultipleWinnersService()
-
-      setYearsWithMultipleWinners(response?.years)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+export async function YearsWithMultipleWinners(): Promise<JSX.Element> {
+  const yearsWithMultipleWinners = await getYearsWithMultipleWinnersService()
 
   return (
     <Card>
@@ -38,7 +19,7 @@ export function YearsWithMultipleWinners(): JSX.Element {
         <CardTitle>List years with multiple winners</CardTitle>
       </CardHeader>
       <CardContent>
-        {yearsWithMultipleWinners.length > 0 && (
+        {yearsWithMultipleWinners?.years?.length > 0 && (
           <Table>
             <TableHeader>
               <TableRow>
@@ -48,7 +29,7 @@ export function YearsWithMultipleWinners(): JSX.Element {
             </TableHeader>
 
             <TableBody>
-              {yearsWithMultipleWinners?.map((item: IYearData) => (
+              {yearsWithMultipleWinners?.years?.map((item: IYearData) => (
                 <TableRow key={item.year}>
                   <TableCell>{item.year}</TableCell>
                   <TableCell>{item.winnerCount}</TableCell>

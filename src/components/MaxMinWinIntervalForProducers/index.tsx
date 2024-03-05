@@ -1,5 +1,3 @@
-'use client'
-
 import {
   Table,
   TableBody,
@@ -9,28 +7,11 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { useEffect, useState } from 'react'
-import { type IInterval, type IIntervalList } from '@/types'
+import { type IInterval } from '@/types'
 import { getMaxMinWinIntervalForProducers } from '@/services/getMaxMinWinIntervalForProducers'
 
-export function MaxMinWinIntervalForProducers(): JSX.Element {
-  const [maxMinWinIntervalForProducers, setMaxMinWinIntervalForProducers] =
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    useState<IIntervalList>({} as IIntervalList)
-
-  useEffect(() => {
-    getData()
-  }, [])
-
-  async function getData(): Promise<void> {
-    try {
-      const response = await getMaxMinWinIntervalForProducers()
-
-      setMaxMinWinIntervalForProducers(response)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+export async function MaxMinWinIntervalForProducers(): Promise<JSX.Element> {
+  const maxMinWinIntervalForProducers = await getMaxMinWinIntervalForProducers()
 
   return (
     <Card>

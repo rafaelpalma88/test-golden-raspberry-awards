@@ -1,5 +1,3 @@
-'use client'
-
 import { Menubar, MenubarMenu, MenubarTrigger } from '@/components/ui/menubar'
 import Link from 'next/link'
 

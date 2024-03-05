@@ -1,5 +1,3 @@
-'use client'
-
 import {
   Table,
   TableBody,
@@ -9,28 +7,11 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { useEffect, useState } from 'react'
 import { type IStudio } from '@/types'
 import { getStudiosWithWinCount } from '@/services/getStudiosWithWinCount'
 
-export function StudiosWithWinCount(): JSX.Element {
-  const [studiosWithWinCount, setStudiosWithWinCount] = useState<IStudio[]>([])
-
-  useEffect(() => {
-    getData()
-  }, [])
-
-  async function getData(): Promise<void> {
-    try {
-      const response = await getStudiosWithWinCount()
-
-      const { studios } = response
-
-      setStudiosWithWinCount(studios)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+export async function StudiosWithWinCount(): Promise<JSX.Element> {
+  const { studios } = await getStudiosWithWinCount()
 
   return (
     <Card>
@@ -47,8 +28,8 @@ export function StudiosWithWinCount(): JSX.Element {
           </TableHeader>
 
           <TableBody>
-            {studiosWithWinCount.length > 0 &&
-              studiosWithWinCount?.slice(0, 3).map((item: IStudio) => (
+            {studios.length > 0 &&
+              studios?.slice(0, 3).map((item: IStudio) => (
                 <TableRow key={item.name}>
                   <TableCell>{item.name}</TableCell>
                   <TableCell>{item.winCount}</TableCell>
