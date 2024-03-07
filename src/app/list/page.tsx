@@ -104,6 +104,7 @@ export default function List(): JSX.Element {
                           className="flex w-full max-w-sm items-center space-x-2 pb-5"
                           // eslint-disable-next-line @typescript-eslint/no-misused-promises
                           onSubmit={handleSubmit(onSubmit)}
+                          data-testid="filtered-year"
                         >
                           <Input
                             type="number"
@@ -119,7 +120,10 @@ export default function List(): JSX.Element {
                     <TableHead className="w-[140px]">
                       <div className="py-2">Winner?</div>
                       <div className="pb-2">
-                        <Select onValueChange={handleWinnerChange}>
+                        <Select
+                          data-testid="select-iswinner"
+                          onValueChange={handleWinnerChange}
+                        >
                           <SelectTrigger>
                             <SelectValue placeholder="Yes/No" />
                           </SelectTrigger>
