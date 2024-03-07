@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { CustomPagination } from '.'
-import { moviesMock } from '../../../__tests__/mocks/moviesMock'
+import { mockMoviesListPage1APIResponse } from '../../../__tests__/mocks/api/mockMoviesListAPIResponse'
 
 describe('Component: Custom Pagination', () => {
   it('should render correctly custom pagination component', () => {
@@ -9,7 +9,7 @@ describe('Component: Custom Pagination', () => {
 
     render(
       <CustomPagination
-        movies={moviesMock}
+        movies={mockMoviesListPage1APIResponse}
         selectedPage={selectedPageMock}
         handleNextPage={handleNextPageMock}
       />
@@ -20,8 +20,8 @@ describe('Component: Custom Pagination', () => {
     const paginationLink13 = screen.getByTestId('pagination-link-13')
     expect(paginationLink13).toBeInTheDocument()
 
-    const paginationLink14 = screen.queryByTestId('pagination-link-14')
-    expect(paginationLink14).not.toBeInTheDocument()
+    const paginationLink15 = screen.queryByTestId('pagination-link-15')
+    expect(paginationLink15).not.toBeInTheDocument()
   })
 
   it('should call handleNextPage when a pagination link is clicked', () => {
@@ -31,7 +31,10 @@ describe('Component: Custom Pagination', () => {
 
     render(
       <CustomPagination
-        movies={{ ...moviesMock, totalPages: totalPagesMock }}
+        movies={{
+          ...mockMoviesListPage1APIResponse,
+          totalPages: totalPagesMock,
+        }}
         selectedPage={selectedPageMock}
         handleNextPage={handleNextPageMock}
       />
