@@ -61,6 +61,7 @@ export default function List(): JSX.Element {
   }
 
   function handleWinnerChange(isWinnerSelected: 'yes' | 'no'): void {
+    setSelectedPage(0)
     if (isWinnerSelected === 'yes') {
       setIsWinner(true)
     } else if (isWinnerSelected === 'no') {
@@ -69,6 +70,7 @@ export default function List(): JSX.Element {
   }
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    setSelectedPage(0)
     const { selectedYear } = data
     setFilteredYear(selectedYear)
   }
