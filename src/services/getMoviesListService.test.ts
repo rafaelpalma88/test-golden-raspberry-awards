@@ -50,14 +50,14 @@ describe('API: getMoviesListService', () => {
     jest
       .spyOn(api, 'get')
       .mockRejectedValue(new Error('An error occurred while fetching data'))
-    const response = await getMoviesListService({
-      selectedPage: 1,
-      filteredYear: '1988',
-    })
-    if (response instanceof Error) {
-      expect(response.message).toContain(
-        'An error occurred while fetching data'
-      )
+
+    try {
+      await getMoviesListService({
+        selectedPage: 1,
+        filteredYear: '1988',
+      })
+    } catch (error: any) {
+      expect(error.message).toBe('An error occurred while fetching data')
     }
   })
 })

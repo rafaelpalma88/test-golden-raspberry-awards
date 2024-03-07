@@ -15,11 +15,10 @@ describe('API: getMaxMinWinIntervalForProducers', () => {
     jest
       .spyOn(api, 'get')
       .mockRejectedValue(new Error('An error occurred while fetching data'))
-    const response = await getMaxMinWinIntervalForProducers()
-    if (response instanceof Error) {
-      expect(response.message).toContain(
-        'An error occurred while fetching data'
-      )
+    try {
+      await getMaxMinWinIntervalForProducers()
+    } catch (error: any) {
+      expect(error.message).toBe('An error occurred while fetching data')
     }
   })
 })

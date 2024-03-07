@@ -20,11 +20,11 @@ describe('API: getYearsWithMultipleWinnersService', () => {
     jest
       .spyOn(api, 'get')
       .mockRejectedValue(new Error('An error occurred while fetching data'))
-    const response = await getYearsWithMultipleWinnersService()
-    if (response instanceof Error) {
-      expect(response.message).toContain(
-        'An error occurred while fetching data'
-      )
+
+    try {
+      await getYearsWithMultipleWinnersService()
+    } catch (error: any) {
+      expect(error.message).toBe('An error occurred while fetching data')
     }
   })
 })
