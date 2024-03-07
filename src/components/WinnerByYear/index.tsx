@@ -72,7 +72,7 @@ export function WinnerByYear(): JSX.Element {
               <TableRow>
                 <TableHead>ID</TableHead>
                 <TableHead>Year</TableHead>
-                <TableHead>Win Count</TableHead>
+                <TableHead>Title</TableHead>
               </TableRow>
             </TableHeader>
 

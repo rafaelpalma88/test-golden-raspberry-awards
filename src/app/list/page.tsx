@@ -30,7 +30,7 @@ interface Inputs {
 }
 
 export default function List(): JSX.Element {
-  const [selectedPage, setSelectedPage] = useState<number>(1)
+  const [selectedPage, setSelectedPage] = useState<number>(0)
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const [movies, setMovies] = useState<IMoviesResponse>({} as IMoviesResponse)
   const [filteredYear, setFilteredYear] = useState<string | null>(null)
@@ -57,7 +57,7 @@ export default function List(): JSX.Element {
   }
 
   function handleNextPage(pageNumber: number): void {
-    setSelectedPage(pageNumber)
+    setSelectedPage(pageNumber - 1)
   }
 
   function handleWinnerChange(isWinnerSelected: 'yes' | 'no'): void {

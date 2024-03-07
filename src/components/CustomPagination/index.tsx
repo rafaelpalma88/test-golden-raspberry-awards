@@ -24,21 +24,16 @@ export function CustomPagination({
   }
 
   const pages = Array.from(
-    { length: movies?.totalPages - 1 },
+    { length: movies?.totalPages },
     (_, index) => index + 1
   )
-
   return (
     <Pagination>
       <PaginationContent>
-        {/* TODO: Improve pagination using first and last page */}
-        {/* <PaginationItem>
-        <PaginationPrevious href="#" />
-      </PaginationItem> */}
         {pages?.map((page) => (
           <PaginationItem key={page}>
             <PaginationLink
-              isActive={selectedPage === page}
+              isActive={selectedPage + 1 === page}
               onClick={() => {
                 handleClick(page)
               }}
@@ -48,13 +43,6 @@ export function CustomPagination({
             </PaginationLink>
           </PaginationItem>
         ))}
-
-        {/* <PaginationItem>
-        <PaginationEllipsis />
-      </PaginationItem> */}
-        {/* <PaginationItem>
-        <PaginationNext onClick={handleNextPage} href="#" />
-      </PaginationItem> */}
       </PaginationContent>
     </Pagination>
   )
