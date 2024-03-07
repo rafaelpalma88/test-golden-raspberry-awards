@@ -66,6 +66,8 @@ export default function List(): JSX.Element {
       setIsWinner(true)
     } else if (isWinnerSelected === 'no') {
       setIsWinner(false)
+    } else if (isWinnerSelected === 'all') {
+      setIsWinner(null)
     }
   }
 
@@ -115,6 +117,7 @@ export default function List(): JSX.Element {
                             <SelectValue placeholder="Yes/No" />
                           </SelectTrigger>
                           <SelectContent>
+                            <SelectItem value="all">Yes/No</SelectItem>
                             <SelectItem value="yes">Yes</SelectItem>
                             <SelectItem value="no">No</SelectItem>
                           </SelectContent>
