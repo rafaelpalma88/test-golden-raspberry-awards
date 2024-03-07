@@ -1,10 +1,13 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import List from './page'
 
 describe('Page: Movies List', () => {
   it('should render correctly Movies List page', () => {
     render(<List />)
-    // TODO: I need to finish this test
-    expect(1).toBe(2)
+    const winnerLabel = screen.getByText('Winner?')
+    expect(winnerLabel).toBeInTheDocument()
+
+    const yesNoLabel = screen.getByText('Yes/No')
+    expect(yesNoLabel).toBeInTheDocument()
   })
 })

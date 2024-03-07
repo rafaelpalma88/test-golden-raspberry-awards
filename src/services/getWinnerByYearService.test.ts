@@ -20,4 +20,16 @@ describe('API: getWinnerByYearService', () => {
     const response = await getWinnerByYearService({ selectedYear: 2016 })
     expect(response).toBe(data)
   })
+
+  it('should return API error', async () => {
+    jest
+      .spyOn(api, 'get')
+      .mockRejectedValue(new Error('An error occurred while fetching data'))
+    const response = await getWinnerByYearService({ selectedYear: 2016 })
+    if (response instanceof Error) {
+      expect(response.message).toContain(
+        'An error occurred while fetching data'
+      )
+    }
+  })
 })

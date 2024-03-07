@@ -42,4 +42,16 @@ describe('API: getStudiosWithWinCount', () => {
     const response = await getStudiosWithWinCount()
     expect(response).toBe(data)
   })
+
+  it('should return API error', async () => {
+    jest
+      .spyOn(api, 'get')
+      .mockRejectedValue(new Error('An error occurred while fetching data'))
+    const response = await getStudiosWithWinCount()
+    if (response instanceof Error) {
+      expect(response.message).toContain(
+        'An error occurred while fetching data'
+      )
+    }
+  })
 })

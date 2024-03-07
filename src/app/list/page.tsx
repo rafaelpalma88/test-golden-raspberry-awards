@@ -50,6 +50,13 @@ export default function List(): JSX.Element {
         filteredYear,
       })
 
+      if (response instanceof Error) {
+        console.error(
+          response instanceof Error ? response.message : 'Unknown error'
+        )
+        return
+      }
+
       setMovies(response)
     } catch (error) {
       console.error(error)
@@ -60,7 +67,7 @@ export default function List(): JSX.Element {
     setSelectedPage(pageNumber - 1)
   }
 
-  function handleWinnerChange(isWinnerSelected: 'yes' | 'no'): void {
+  function handleWinnerChange(isWinnerSelected: 'yes' | 'no' | 'all'): void {
     setSelectedPage(0)
     if (isWinnerSelected === 'yes') {
       setIsWinner(true)

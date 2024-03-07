@@ -9,7 +9,6 @@ export async function getMaxMinWinIntervalForProducers(): Promise<IIntervalList>
 
     return data
   } catch (error) {
-    console.error('error')
-    throw error
+    throw new Error('An error occurred while fetching data')
   }
 }

@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { WinnerByYear } from '.'
 
 describe('Component: WinnerByYear', () => {
   it('should render correctly WinnerByYear component', () => {
     render(<WinnerByYear />)
-    // TODO: I need to finish this test
-    expect(1).toBe(2)
+    const titleText = screen.getByText('List movie winners by year')
+    expect(titleText).toBeInTheDocument()
   })
 })

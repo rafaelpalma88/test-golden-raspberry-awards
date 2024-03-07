@@ -15,7 +15,6 @@ export async function getWinnerByYearService({
 
     return data
   } catch (error) {
-    console.error('error')
-    throw error
+    throw new Error('An error occurred while fetching data')
   }
 }
