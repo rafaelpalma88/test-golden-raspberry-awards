@@ -3,9 +3,13 @@ import { api } from './api'
 
 export async function getStudiosWithWinCount(): Promise<IStudioWithCountResponse> {
   try {
-    const { data } = await api.get<IStudioWithCountResponse>(
-      '?projection=studios-with-win-count'
-    )
+    const response = await api('?projection=studios-with-win-count', {
+      next: {
+        revalidate: 10,
+      },
+    })
+
+    const data = await response.json()
 
     return data
   } catch (error) {

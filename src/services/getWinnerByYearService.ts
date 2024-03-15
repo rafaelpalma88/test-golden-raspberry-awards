@@ -9,9 +9,13 @@ export async function getWinnerByYearService({
   selectedYear = new Date().getFullYear(),
 }: WinnerByYearProps): Promise<IMovie[]> {
   try {
-    const { data } = await api.get<IMovie[]>(
-      `?winner=true&year=${selectedYear}`
-    )
+    const response = await api(`?winner=true&year=${selectedYear}`, {
+      next: {
+        revalidate: 10,
+      },
+    })
+
+    const data = await response.json()
 
     return data
   } catch (error) {

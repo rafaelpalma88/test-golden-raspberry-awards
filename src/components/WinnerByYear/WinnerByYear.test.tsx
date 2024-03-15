@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react'
 import { WinnerByYear } from '.'
 
 describe('Component: WinnerByYear', () => {
-  it('should render correctly WinnerByYear component', () => {
+  it('should render correctly WinnerByYear component', async () => {
     render(<WinnerByYear />)
-    const titleText = screen.getByText('List movie winners by year')
+    const titleText = await screen.getByText('List movie winners by year')
     expect(titleText).toBeInTheDocument()
   })
 })

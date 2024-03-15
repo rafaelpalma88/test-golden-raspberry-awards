@@ -23,7 +23,13 @@ export async function getMoviesListService({
       url += `&year=${filteredYear}`
     }
 
-    const { data } = await api.get<IMoviesResponse>(url)
+    const response = await api(url, {
+      next: {
+        revalidate: 10,
+      },
+    })
+
+    const data = await response.json()
 
     return data
   } catch (error) {
