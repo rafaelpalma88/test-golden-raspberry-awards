@@ -4,7 +4,7 @@ import { WinnerByYear } from '.'
 describe('Component: WinnerByYear', () => {
   it('should render correctly WinnerByYear component', async () => {
     render(<WinnerByYear />)
-    const titleText = await screen.getByText('List movie winners by year')
+    const titleText = screen.getByText('List movie winners by year')
     expect(titleText).toBeInTheDocument()
   })
 })
