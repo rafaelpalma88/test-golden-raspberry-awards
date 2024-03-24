@@ -10,7 +10,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { type IMovie, type IMoviesWinnerInfo } from '@/types'
 import { getWinnerByYearService } from '@/services/getWinnerByYearService'
@@ -27,13 +27,9 @@ export function WinnerByYear(): JSX.Element {
     [] as IMovie[]
   )
 
-  useEffect(() => {
-    getData()
-  }, [selectedYear])
-
   const { register, handleSubmit } = useForm<Inputs>()
 
-  async function getData(): Promise<void> {
+  const getData = useCallback(async () => {
     try {
       const response = await getWinnerByYearService({ selectedYear })
 
@@ -41,7 +37,11 @@ export function WinnerByYear(): JSX.Element {
     } catch (error) {
       console.error(error)
     }
-  }
+  }, [selectedYear])
+
+  useEffect(() => {
+    getData()
+  }, [getData])
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const { selectedYear } = data

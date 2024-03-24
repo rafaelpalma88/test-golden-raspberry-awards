@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/table'
 
 import { Card, CardContent } from '@/components/ui/card'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
@@ -36,13 +36,9 @@ export default function List(): JSX.Element {
   const [filteredYear, setFilteredYear] = useState<string | null>(null)
   const [isWinner, setIsWinner] = useState<boolean | null>(null)
 
-  useEffect(() => {
-    getData()
-  }, [isWinner, filteredYear, selectedPage])
-
   const { register, handleSubmit } = useForm<Inputs>()
 
-  async function getData(): Promise<void> {
+  const getData = useCallback(async () => {
     try {
       const response = await getMoviesListService({
         selectedPage,
@@ -61,7 +57,11 @@ export default function List(): JSX.Element {
     } catch (error) {
       console.error(error)
     }
-  }
+  }, [isWinner, filteredYear, selectedPage])
+
+  useEffect(() => {
+    getData()
+  }, [getData])
 
   function handleNextPage(pageNumber: number): void {
     setSelectedPage(pageNumber - 1)
