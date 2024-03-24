@@ -1,4 +1,5 @@
 import { type IStudioWithCountResponse } from '@/types'
+
 import { api } from './api'
 
 export async function getStudiosWithWinCount(): Promise<IStudioWithCountResponse> {

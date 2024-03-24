@@ -1,10 +1,10 @@
+import { getMoviesListService } from './getMoviesListService'
 import {
   mockMoviesListIsWinnerAPIResponse,
   mockMoviesListPage1APIResponse,
   mockMoviesListPage2APIResponse,
   mockMoviesListSelectedYearAPIResponse,
 } from '../../__tests__/mocks/api/mockMoviesListAPIResponse'
-import { getMoviesListService } from './getMoviesListService'
 
 describe('API: getMoviesListService', () => {
   it('should return movies list service with selectedPage 1', async () => {

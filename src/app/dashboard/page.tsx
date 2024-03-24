@@ -1,7 +1,7 @@
 import { MaxMinWinIntervalForProducers } from '@/components/MaxMinWinIntervalForProducers'
-import { YearsWithMultipleWinners } from '@/components/YearsWithMultipleWinners'
 import { StudiosWithWinCount } from '@/components/StudiosWithWinCount'
 import { WinnerByYear } from '@/components/WinnerByYear'
+import { YearsWithMultipleWinners } from '@/components/YearsWithMultipleWinners'
 
 export default function Dashboard(): JSX.Element {
   return (

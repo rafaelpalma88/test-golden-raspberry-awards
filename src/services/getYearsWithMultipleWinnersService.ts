@@ -1,4 +1,5 @@
 import { type IYearsWithWinnerCount } from '@/types'
+
 import { api } from './api'
 
 export async function getYearsWithMultipleWinnersService(): Promise<IYearsWithWinnerCount> {

@@ -1,3 +1,4 @@
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   Table,
   TableBody,
@@ -6,9 +7,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { type IInterval } from '@/types'
 import { getMaxMinWinIntervalForProducers } from '@/services/getMaxMinWinIntervalForProducers'
+import { type IInterval } from '@/types'
 
 export async function MaxMinWinIntervalForProducers(): Promise<JSX.Element> {
   const maxMinWinIntervalForProducers = await getMaxMinWinIntervalForProducers()

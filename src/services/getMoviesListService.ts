@@ -1,4 +1,5 @@
 import { type IMoviesResponse } from '@/types'
+
 import { api } from './api'
 
 export interface MoviesListProps {

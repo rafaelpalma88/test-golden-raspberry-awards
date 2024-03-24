@@ -1,5 +1,5 @@
-import { mockStudiosWithCount } from '../../__tests__/mocks/api/mockStudiosWithCount'
 import { getStudiosWithWinCount } from './getStudiosWithWinCount'
+import { mockStudiosWithCount } from '../../__tests__/mocks/api/mockStudiosWithCount'
 
 describe('API: getStudiosWithWinCount', () => {
   it('should return studios list with win count', async () => {

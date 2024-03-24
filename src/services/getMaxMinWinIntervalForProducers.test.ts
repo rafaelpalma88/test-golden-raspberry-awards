@@ -1,5 +1,5 @@
-import { mockCityAPIResponse } from '../../__tests__/mocks/api/mockMaxMinWinIntervalForProducersAPIResponse'
 import { getMaxMinWinIntervalForProducers } from './getMaxMinWinIntervalForProducers'
+import { mockCityAPIResponse } from '../../__tests__/mocks/api/mockMaxMinWinIntervalForProducersAPIResponse'
 
 describe('API: getMaxMinWinIntervalForProducers', () => {
   it('should return maximun and minimun interval for producers', async () => {

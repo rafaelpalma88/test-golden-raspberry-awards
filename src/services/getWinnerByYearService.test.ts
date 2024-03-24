@@ -1,5 +1,5 @@
-import { mockWinnerByYearService } from '../../__tests__/mocks/api/mockWinnerByYearService'
 import { getWinnerByYearService } from './getWinnerByYearService'
+import { mockWinnerByYearService } from '../../__tests__/mocks/api/mockWinnerByYearService'
 
 describe('API: getWinnerByYearService', () => {
   it('should return maximun and minimun interval for producers', async () => {

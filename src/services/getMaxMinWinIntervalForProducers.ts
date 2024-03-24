@@ -1,4 +1,5 @@
 import type { IIntervalList } from '@/types'
+
 import { api } from './api'
 
 interface CustomRequestInit extends RequestInit {

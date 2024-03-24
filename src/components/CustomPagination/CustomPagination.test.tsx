@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react'
+
 import { CustomPagination } from '.'
 import { mockMoviesListPage1APIResponse } from '../../../__tests__/mocks/api/mockMoviesListAPIResponse'
 

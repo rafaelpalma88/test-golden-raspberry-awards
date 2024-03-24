@@ -1,3 +1,4 @@
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   Table,
   TableBody,
@@ -6,9 +7,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { type IStudio } from '@/types'
 import { getStudiosWithWinCount } from '@/services/getStudiosWithWinCount'
+import { type IStudio } from '@/types'
 
 export async function StudiosWithWinCount(): Promise<JSX.Element> {
   const { studios } = await getStudiosWithWinCount()

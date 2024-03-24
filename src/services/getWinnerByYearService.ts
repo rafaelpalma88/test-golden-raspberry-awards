@@ -1,4 +1,5 @@
 import { type IMovie } from '@/types'
+
 import { api } from './api'
 
 interface WinnerByYearProps {

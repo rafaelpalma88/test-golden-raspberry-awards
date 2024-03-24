@@ -1,5 +1,13 @@
 'use client'
 
+import { useCallback, useEffect, useState } from 'react'
+
+import { type SubmitHandler, useForm } from 'react-hook-form'
+
+import { CustomPagination } from '@/components/CustomPagination'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
 import {
   Select,
   SelectContent,
@@ -15,15 +23,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-
-import { Card, CardContent } from '@/components/ui/card'
-import { useCallback, useEffect, useState } from 'react'
-import { Input } from '@/components/ui/input'
-import { useForm, type SubmitHandler } from 'react-hook-form'
-import { Button } from '@/components/ui/button'
-import { type IMoviesWinnerInfo, type IMoviesResponse } from '@/types'
-import { CustomPagination } from '@/components/CustomPagination'
 import { getMoviesListService } from '@/services/getMoviesListService'
+import { type IMoviesResponse, type IMoviesWinnerInfo } from '@/types'
 
 interface Inputs {
   selectedYear: string

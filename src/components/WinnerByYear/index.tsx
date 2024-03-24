@@ -1,6 +1,12 @@
 'use client'
-import { Input } from '@/components/ui/input'
+
+import { useCallback, useEffect, useState } from 'react'
+
+import { type SubmitHandler, useForm } from 'react-hook-form'
+
 import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
 import {
   Table,
   TableBody,
@@ -9,11 +15,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { useCallback, useEffect, useState } from 'react'
-import { useForm, type SubmitHandler } from 'react-hook-form'
-import { type IMovie, type IMoviesWinnerInfo } from '@/types'
 import { getWinnerByYearService } from '@/services/getWinnerByYearService'
+import { type IMovie, type IMoviesWinnerInfo } from '@/types'
 
 interface Inputs {
   selectedYear: number
